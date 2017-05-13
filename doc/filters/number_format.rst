@@ -15,6 +15,14 @@ separator using the additional arguments:
 
     {{ 9800.333|number_format(2, '.', ',') }}
 
+If you want to format a negative number it is required you wrap the number with parantheses.
+This is due to the `operator precedence`_
+
+.. code-block:: jinja
+
+    {{ -9800.333|number_format(2, '.', ',') }} {# output : -9 #}
+    {{ (-9800.333)|number_format(2, '.', ',') }} {# output : -9.800, 33 #}
+
 If no formatting options are provided then Twig will use the default formatting
 options of:
 
@@ -40,3 +48,4 @@ Arguments
 * ``thousand_sep``:   The character(s) to use for the thousands separator
 
 .. _`number_format`: http://php.net/number_format
+.. _`operator precedence`: https://twig.sensiolabs.org/doc/2.x/templates.html#twig-expressions
